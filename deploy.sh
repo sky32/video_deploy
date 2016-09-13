@@ -11,7 +11,7 @@ sudo apt-get install -y software-properties-common python-software-properties
 sudo add-apt-repository -y ppa:kirillshkrogalev/ffmpeg-next
 sudo apt-get update
 sudo apt-get install -y ffmpeg
-sudo apt-get install nginx php5-fpm
+sudo apt-get install -y nginx php5-fpm
 sed -i -e '54,64 s/#//' /etc/nginx/sites-available/default
 sed -i -e '59 s/fastcgi_pass/# fastcgi_pass/' /etc/nginx/sites-available/default
 sed -i -e '25 s/index.*/index index.php;/' /etc/nginx/sites-available/default
