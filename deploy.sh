@@ -5,12 +5,12 @@ wget -q https://www.ubuntulinux.jp/ubuntu-jp-ppa-keyring.gpg -O- | apt-key add -
 wget https://www.ubuntulinux.jp/sources.list.d/trusty.list -O /etc/apt/sources.list.d/ubuntu-ja.list
 apt-get update
 # install rtorrent nginx php
-apt-get install -y rTorrent nginx php5-fpm screen
+apt-get install -y rTorrent nginx php5-fpm php5-curl screen
 sed -i -e '54,64 s/#//' /etc/nginx/sites-available/default
 sed -i -e '59 s/fastcgi_pass/# fastcgi_pass/' /etc/nginx/sites-available/default
 sed -i -e '25 s/index.*/index index.php;/' /etc/nginx/sites-available/default
 sed -i -e '24 s/root.*/root \/root\/m3u8\/;/' /etc/nginx/sites-available/default
-sed -i -e '30a \\t\troot /root/m3u9/;' /etc/nginx/sites-available/default
+sed -i -e '30a \\t\troot /root/m3u8/;' /etc/nginx/sites-available/default
 /etc/init.d/php5-fpm start
 /etc/init.d/nginx start
 # install add-apt-repository
@@ -58,6 +58,4 @@ system.method.set_key = event.download.finished,move_complete,"execute=/root/mov
 EOF
 
 # create download php
-cat <<EOF > /root/m3u8/index.php
-
-EOF
+wget https://raw.githubusercontent.com/sky32/video_deploy/master/index.php -P /root/m3u8/ -O index.php
