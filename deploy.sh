@@ -10,6 +10,7 @@ sed -i -e '54,64 s/#//' /etc/nginx/sites-available/default
 sed -i -e '59 s/fastcgi_pass/# fastcgi_pass/' /etc/nginx/sites-available/default
 sed -i -e '25 s/index.*/index index.php;/' /etc/nginx/sites-available/default
 sed -i -e '24 s/root.*/root \/root\/m3u8\/;/' /etc/nginx/sites-available/default
+sed -i -e '30a \\t\troot /root/m3u9/;' /etc/nginx/sites-available/default
 /etc/init.d/php5-fpm start
 /etc/init.d/nginx start
 # install add-apt-repository
@@ -22,8 +23,9 @@ apt-get install -y ffmpeg
 mkdir /root/downloads/
 mkdir /root/downloads/.session/
 mkdir /root/torrent/
+mkdir /root/m3u8/
 # create rtorrent config
-cat <<EOF > /root/test.rc
+cat <<EOF > /root/.rtorrent.rc
 min_peers = 400
 max_peers = 1000
 min_peers_seed = 100
@@ -53,5 +55,9 @@ dht = off
 peer_exchange = yes
 encoding_list = utf-8
 system.method.set_key = event.download.finished,move_complete,"execute=/root/move_sliced.sh,$d.get_base_path=,$d.loaded_file=;execute=mv,-u,$d.loaded_file=,/root/output/"
+EOF
+
+# create download php
+cat <<EOF > /root/m3u8/index.php
 
 EOF
