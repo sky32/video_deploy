@@ -59,3 +59,8 @@ EOF
 
 # create download php
 wget https://raw.githubusercontent.com/sky32/video_deploy/master/index.php -P /root/m3u8/ -O index.php
+wget https://raw.githubusercontent.com/sky32/video_deploy/master/move_sliced.sh -P /root/ -O move_sliced.sh
+chmod +x /root/move_sliced.sh
+chmod 755 /root/
+chmod 755 /root/m3u8/
+chmod 755 /root/torrent/
