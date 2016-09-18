@@ -29,10 +29,14 @@ chmod 755 /root/
 chmod 755 /root/m3u8/
 chmod 755 /root/torrent/
 # create script
-wget https://raw.githubusercontent.com/sky32/video_deploy/master/rtorrent.rc -P /root/ -O .rtorrent.rc
-wget https://raw.githubusercontent.com/sky32/video_deploy/master/index.php -P /root/m3u8/ -O index.php
-wget https://raw.githubusercontent.com/sky32/video_deploy/master/move_sliced.sh -P /root/ -O move_sliced.sh
-wget https://raw.githubusercontent.com/sky32/video_deploy/master/rtorrent_supervisor.conf -P /etc/supervisor/conf.d/ -O rtorrent_supervisor.conf
+wget https://raw.githubusercontent.com/sky32/video_deploy/master/rtorrent.rc -O .rtorrent.rc
+mv .rtorrent.rc /root/.rtorrent.rc
+wget https://raw.githubusercontent.com/sky32/video_deploy/master/index.php -O index.php
+mv index.php /root/m3u8/index.php
+wget https://raw.githubusercontent.com/sky32/video_deploy/master/move_sliced.sh -O move_sliced.sh
+mv move_sliced.sh /root/move_sliced.sh
+wget https://raw.githubusercontent.com/sky32/video_deploy/master/rtorrent_supervisor.conf -O rtorrent_supervisor.conf
+mv rtorrent_supervisor.conf /etc/supervisor/conf.d/rtorrent_supervisor.conf
 chmod +x /root/move_sliced.sh
 supervisord
-supervisorctl sratr all
+supervisorctl start all

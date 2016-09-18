@@ -5,9 +5,11 @@ $file  = $_GET['file'];
 $debug = $_GET['debug'];
 if ((empty($token) || empty($url) || empty($file)) && empty($debug)) {
     echo 'fail';
+    exit;
 }
 if ($token !== md5($url . $file . "happysky") && empty($debug)) {
     echo 'fail';
+    exit;
 }
 // $url  = 'http://www.mp4ba.com/down.php?date=1473437970&hash=1d3656d3d08db180ec70b50251aaf2e9765b6282';
 // $file = '1d3656d3d08db180ec70b50251aaf2e9765b6282.torrent';
