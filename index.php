@@ -1,4 +1,7 @@
 <?php
+set_time_limit(0);
+error_reporting(E_ERROR);
+ini_set('display_errors', 0);
 $token = $_GET['token'];
 $url   = $_GET['url'];
 $file  = $_GET['file'];
