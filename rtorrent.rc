@@ -26,4 +26,4 @@ use_udp_trackers = yes
 dht = off
 peer_exchange = yes
 encoding_list = utf-8
-system.method.set_key = event.download.finished,move_complete,"execute=/root/move_sliced.sh,$d.get_base_path=,$d.loaded_file=;execute=mv,-u,$d.loaded_file=,/root/output/"
+system.method.set_key = event.download.finished,move_complete,"execute=/root/move_sliced.sh,$d.get_base_path=,$d.loaded_file=;"

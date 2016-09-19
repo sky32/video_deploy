@@ -25,6 +25,7 @@ mkdir /root/downloads/.session/
 mkdir /root/torrent/
 mkdir /root/m3u8/
 mkdir /root/log/
+mkdir /root/output/
 chmod 755 /root/
 chmod 755 /root/m3u8/
 chmod 755 /root/torrent/
